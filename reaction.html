@@ -12,44 +12,48 @@
 <body>
   <h1>Reaction Timer Mahima Byrapuneni</h1>
 
-  <p id="target">Your Time</p>
-  <p id="count">Count</p>
+  <div id="target">Your time</div>
+  <div id="countdown">Count</div>
 
-  <button onclick="startTime()">Start Timer</button>
-  <button onclick="recordReact()">React</button>
-  <script> 
-  var myTime = undefined;
-  var buttonTime;
-   function startTime() {
-    for(var i=0;i<4;i++){
-    //     setTimeout(()=>{
-    //   document.getElementById('countdown').innerHTML = i;
-    // }, 3-i * 1000);
-    // document.getElementById('countdown').innerHTML = 0;
-    //   }
-
-      setTimeout(()=>{
-      if(myTime == undefined){
-          document.getElementById('target').innerHTML = "Too Slow";
-      }
-      else{
-          buttonTime = Date.now();
-          document.getElementById('target').innerHTML = "Time was" + buttonTime;
-      }
-    }, 3000);
-    // document.getElementById('countdown').innerHTML = 0;
-      }
-      
-      
-  }
+  <button type="button" onclick="startTime()">Start Timer</button>
+  <button type="button" onclick="recordReact()">React Now</button>
 
   
+  <script> 
+    myTime = undefined;
 
-  function recordReact() {
-      myTime = Date.now();
-      console.log("myTime",myTime);
-  }
+    function recordReact() {
+        myTime = Date.now();
+        console.log("Time : " + myTime);
+    }
 
+    function startTime() {
+        myTime = undefined
+        buttonTime = Date.now()
+        var countd = Math.floor(Math.random()*(10-2)+2)
+        for(let i=0;i<countd+1;i++){
+            var j=(countd-i)*1000;
+            var p=i;
+            setTimeout(() => {
+            document.getElementById("countdown").innerHTML = i;
+            }, j)
+        }
+
+        setTimeout(() => {
+            if(myTime == undefined){
+            document.getElementById("target").innerHTML = "Too Slow";
+            }
+            
+            else{
+            var elapsedTime = (-1) * (buttonTime - myTime);
+            document.getElementById("target").innerHTML = "Time was "+elapsedTime+" ms";
+            }
+        }, countd*1000)
+        }
+  </script>
+
+
+     
 
   </script>
 </body>
